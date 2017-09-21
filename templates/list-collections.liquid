@@ -1,0 +1,38 @@
+<div class="blue-light-background pt20">
+  <div class="wrapper">
+    <div class="container pt30 pb30">
+      <div class="span12">
+        <h5>Thank you for your interest in our products for your pet(s)! Where available, please shop local & support your independent pet supplies retailer. We believe supporting knowlegable, local independent shops helps maintain the integrity of the pet food supply chain and best serves our beloved pets. Nugget's can be found in many wonderful retailers across the U.S. Please click here <a href="/apps/store-locator">(Find a Store)</a> to locate a store near you. Otherwise, it is our privilege to service you direct - please click below to buy online.</h5>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="collections-list">
+  {% for collection in collections %}
+    {% if collection.handle == 'bone-brews' %}
+    <div class="orange-background orange-texture texture-bottom texture-top">
+      <div class="wrapper">
+        <h2 class="block-header">Bone Brews</h2>
+      </div>
+    </div>
+    <div class="orange-light-background orange-light-content">
+    {% elsif collection.handle == 'artisan-yogurts' %}
+    <div class="green-background green-texture texture-bottom texture-top">
+      <div class="wrapper">
+        <h2 class="block-header">Artisan Yogurts</h2>
+      </div>
+    </div>
+    <!-- Begin .green-light-background -->
+    <div class="green-light-background green-light-content">
+    {% elsif collection.handle == 'mix-and-match' %}
+      <div class="blue-background blue-texture texture-bottom texture-top">
+        <div class="wrapper">
+          <h2 class="block-header">Combo Packs</h2>
+        </div>
+      </div>
+      <div class="blue-light-background blue-light-content">
+      {% endif %}
+      {% include 'collection-loop' %}
+    {% endfor %}
+      </div>
+</div> <!-- /#collection.row -->

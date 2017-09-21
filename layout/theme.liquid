@@ -1,0 +1,224 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js ie6 oldie" lang="en"><![endif]-->
+<!--[if IE 7]><html class="no-js ie7 oldie" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8 oldie" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" />
+  <meta charset="utf-8">
+  <meta name="msvalidate.01" content="C8A19C03A9A823506DF57E376346526C" />
+  <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+  <title>{{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
+  {% if page_description %}
+  <meta name="description" content="{{ page_description | escape }}" />
+  {% endif %}<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="{{ canonical_url }}" /> 
+  
+  {% include 'fb-open-graph-tags' %}
+  {% include 'twitter-cards' %}
+  
+  {{ 'styles.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'social/social-icons.css' | global_asset_url | stylesheet_tag }}
+  {{ '//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css' | stylesheet_tag }}
+  
+</head>
+<script type="text/javascript">
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/BjOZVTush0bBSNIKSo0KzEY0tSNMUQ8vAGhkaI2g/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script>
+<body>
+  <div class="preload-images">
+    <img src="{{ 'texture-bkgd-sprite-1200x26.png' | asset_url }}" alt="{{ shop.name }}" />
+    <img src="{{ 'texture-bkgd-sprite-600x13.png' | asset_url }}" alt="{{ shop.name }}" />
+    <img src="{{ 'texture-bkgd-vertical-sprite-600x13.png' | asset_url }}" alt="{{ shop.name }}" />
+    <img src="{{ 'logo-header.jpg' | asset_url }}" alt="{{ shop.name }}" />
+  </div>
+  <!-- Begin toolbar -->
+  <div class="toolbar-wrapper green-texture texture-bottom">
+    <div class="toolbar clearfix">
+      <a href="tel:+1-888-504-1112" class="fl phone-number">1.888.504.1112</a>
+      <a href="/pages/shipping-returns" class="fl shipping-link">Flat-rate $9.95 shipping*</a>
+      <ul class="unstyled fr">
+        
+        <li class="fr">
+          <a href="/cart" class="cart-link" title="Shopping Cart"><i class="fa fa-shopping-cart"></i>({{ cart.item_count }})</a>
+        </li>    
+        <li class="social-icons fr">
+            <a href="https://www.youtube.com/channel/UCeaCwra0bUBW0lTpO6INLaQ" target="_blank"><i class="fa fa-youtube"></i></a>
+            <a href="https://www.facebook.com/nuggetshealthyeats/" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/BigDogNug" target="_blank"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.instagram.com/nuggetshealthyeats/" target="_blank"><i class="fa fa-instagram"></i></a>
+
+        </li>
+        {% include 'top-nav' %}  
+      </ul>
+    </div>
+  </div>
+  <!-- End toolbar -->
+  <!-- Begin Main Nav -->
+  <div class="mainnav-wrapper white-texture texture-bottom">
+    <!-- Begin right navigation -->
+    {% if settings.navigation_alignment == "right" %}
+    <div class="row mainnav clearfix" id="header">
+      <div>
+        <div class="inner-left logo-wrapper">
+          <div class="logo">
+            <a href="/"><img src="{{ 'logo-header.jpg' | asset_url }}" alt="{{ shop.name }}" /></a>
+          </div> 
+        </div>  
+        <div id="menu-button" class="menu-icon">Menu<i class="fa fa-bars"></i></div>
+        <a href="/cart" class="mobile-cart" title="Shopping Cart"><i class="fa fa-shopping-cart"></i><span>Cart</span>( {{ cart.item_count }} )</a>
+          
+        <div id="nav" class="clearfix">
+          <div class="inner-right fr">
+            <nav class="main clearfix">
+              {% include 'site-nav' %}
+            </nav> 
+          </div> 
+        </div> 
+      </div> 
+    </div> 
+    {% endif %}
+    <!-- End right navigation -->
+  </div>
+  <!-- End Main Nav -->
+  <!-- Begin Mobile Nav -->
+  <div class="mobile-wrapper">
+    <nav class="mobile clearfix">
+      {% include 'mobile-menu' %}
+    </nav>
+  </div>
+  <!-- End Mobile Nav -->
+
+  <!-- Begin content-container -->
+  <div class="content-container clearfix">
+      <!-- Begin content-->
+        {{ content_for_layout }}
+        <!-- End content-->
+  </div>
+  <!-- End content-container -->
+  
+  <!-- Begin newsletter -->
+  <div class="newsletter-banner blue-background blue-texture texture-top texture-bottom">
+    <div class="wrapper">
+      <a href="javascript:void(0)" onClick="Privy.show(167069);">
+        <h3>Please subscribe to Nugget's newsletter</h3>
+        <img src="{{ 'heart-white-sm.png' | asset_url }}" alt="White Heart" />
+      </a>
+    </div>
+  </div>
+  <!-- End newsletter -->
+  
+  <!-- Begin footer -->
+  <div class="footer-wrapper">
+    <footer>
+      <div class="row">
+        <!-- Begin footer navigation left -->
+        <div class="span6 footer-menu">
+          {% include 'footer-menu' %}
+        </div>
+        <!-- End footer navigation -->
+        
+        <!-- Begin copyright -->
+        <div class="span6 tc">  
+          <ul class="social-list">
+            <li>
+              <a href="https://www.youtube.com/channel/UCeaCwra0bUBW0lTpO6INLaQ" target="_blank"><i class="fa fa-youtube"></i></a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/nuggetshealthyeats/" target="_blank"><i class="fa fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="https://twitter.com/BigDogNug" target="_blank"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/nuggetshealthyeats/" target="_blank"><i class="fa fa-instagram"></i></a>
+            </li>
+          </ul>        
+          <a href="/"><img class="footer-logo" src="{{ 'logo-footer-circle.png' | asset_url }}" alt="{{ shop.name }} - Logo" /></a>
+          <p class=" copyright">© 2017  NUGGET'S Brands, Inc., All Rights Reserved<a href="/pages/privacy">Privacy Policy</a></p>
+        </div>
+        <!-- End copyright -->
+      </div> 
+    </footer>
+  </div>
+  <!-- End footer -->
+  
+  {% comment %}
+  {{ 'html5shiv.js' | asset_url | script_tag }}
+  {% endcomment %}
+  {{ content_for_header }}
+  <!--script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script-->  
+  
+  {{ 'jquery.min.js' | asset_url | script_tag }}
+  <script type="text/javascript" async src="{{ 'option_selection.js' | shopify_asset_url }}"></script>
+  <script type="text/javascript" async src="{{ 'api.jquery.js' | shopify_asset_url }}"></script>
+  {% if template contains 'customers' %}
+  <script type="text/javascript" async src="{{ 'shopify_common.js' | shopify_asset_url }}"></script>
+  <script type="text/javascript" async src="{{ 'customer_area.js' | shopify_asset_url }}"></script>
+  {% endif %}
+  
+<script type="text/javascript" async src="{{ 'jquery.flexslider-min.js' | asset_url }}"></script>
+  <script type="text/javascript" async src="{{ 'jquery.fancybox.js' | asset_url }}"></script>
+  <script type="text/javascript" async src="{{ 'scripts.js' | asset_url }}"></script>
+  
+  {% if template contains 'product' %}
+  
+  <script type="text/javascript">
+  window.onload = function() {
+    if (window.jQuery) {
+      var selectCallback = function(variant, selector) {
+    
+        if (variant) {
+          if (variant.featured_image) {
+            var newImage = variant.featured_image;
+            var mainImageEl = $('.image.featured img')[0];
+            Shopify.Image.switchImage(newImage, mainImageEl, MinimalTheme.switchImage);
+          } 
+          if (variant.price < variant.compare_at_price) {
+            jQuery('#price-preview').html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}") + " <del>" + Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}") + "</del>");
+          } 
+          else {
+            jQuery('#price-preview').html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}"));
+          }
+          if (variant.available) {
+            jQuery('#add-to-cart').removeAttr('disabled').removeClass('disabled').val('Add to cart'); 
+          } 
+          else {
+            jQuery('#add-to-cart').val('Sold Out').addClass('disabled').attr('disabled', 'disabled');
+          }
+        }
+        else {
+          jQuery('#add-to-cart').val('Unavailable').addClass('disabled').attr('disabled', 'disabled');
+        }
+    
+      };
+  
+  
+  
+    jQuery(document).ready(function($){
+      var optionSelectors = new Shopify.OptionSelectors("product-select", { product: {{ product | json }}, onVariantSelected: selectCallback, enableHistoryState: true });
+      
+      // Add label if only one product option and it isn't 'Title'.
+      {% if product.options.size == 1 and product.options.first != 'Title' %}
+        $('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first }}</label>');
+      {% endif %}
+    
+      Shopify.Image.preload({{ product.images | json }}, 'master'); 
+      Shopify.Image.preload({{ product.images | json }}, '1024x1024');
+
+    });
+  }
+}
+   
+  
+       
+  </script>
+  
+  {% endif %}
+
+  {% if template == "product" %}
+    {{ 'unlimited-options.js' | asset_url | script_tag }}
+  {% endif %}
+  
+</body>
+</html>

@@ -1,0 +1,49 @@
+<div class="collections-list">
+
+
+
+    {% if collection.handle == 'bone-brews' %}
+    <div class="orange-background orange-texture texture-bottom pt20">
+      <div class="wrapper">
+        <h2 class="block-header">Bone Brews</h2>
+      </div>
+    </div>
+    <div class="orange-light-background orange-light-content">
+    {% elsif collection.handle == 'artisan-yogurts' %}
+    <div class="green-background green-texture texture-bottom pt20">
+      <div class="wrapper">
+        <h2 class="block-header">Artisan Yogurts</h2>
+      </div>
+    </div>
+    <!-- Begin .green-light-background -->
+    <div class="green-light-background green-light-content">
+    {% elsif collection.handle == 'mix-and-match' %}
+      <div class="blue-background blue-texture texture-bottom pt20">
+        <div class="wrapper">
+          <h2 class="block-header">Combo Packs</h2>
+        </div>
+      </div>
+      <div class="blue-light-background blue-light-content">
+      {% endif %}
+
+        <div class="wrapper">
+          <div class="container">
+            <!-- Begin no products -->
+            {% if collection.products.size == 0 %}
+            <div>
+              <div class="span12 expanded-message">
+                <p>No products found</p>
+              </div>
+            </div>
+            {% endif %}
+
+          <div class="product-list">
+            {% for product in collection.products %}
+            {% include 'product-loop' with collection.handle %}
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+</div> <!-- End .ollection-list  -->

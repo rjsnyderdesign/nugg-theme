@@ -1,0 +1,280 @@
+<div class="product-page {{ product.type }}">
+{% if product.type == "Bone Brews" %}
+  
+  <div class="orange-background orange-texture texture-bottom pt20">
+    <div class="wrapper">
+      <h2 class="block-header">Bone Brews</h2>
+    </div>
+  </div>
+  <!-- Begin .green-light-background -->
+  <div class="orange-light-background orange-light-content"> 
+    
+{% elsif product.type == "Artisan Yogurts" %}
+  <div class="green-background green-texture texture-bottom pt20">
+    <div class="wrapper">
+      <h2 class="block-header">Artisan Yogurts</h2>
+    </div>
+  </div>
+  <!-- Begin .green-light-background -->
+  <div class="green-light-background green-light-content">
+
+{% elsif product.type == "Mix And Match" %}
+  <div class="blue-background blue-texture texture-bottom pt20">
+    <div class="wrapper">
+      <h2 class="block-header">Combo Packs</h2>
+    </div>
+  </div>
+  <div class="blue-light-background blue-light-content mix-and-match">
+{% else %}
+  
+  <!-- Begin .green-light-background -->
+  <div class="white-background white-content">
+{% endif %}
+
+    <div class="wrapper">
+      <div class="container">
+          <div class="{{ product.handle }}" itemscope itemtype="http://schema.org/Product">
+            <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+            <meta itemprop="image" content="{{ product.featured_image.src | product_img_url: 'grande' }}" />
+ 
+            <div class="clearfix">
+    
+              <!-- Begin breadcrumb -->
+              <div class="span12">
+                <div class="breadcrumb clearfix">
+                  <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections" title="Shop - Nuggets Products" itemprop="url"><span itemprop="title">Products</span></a></span> 
+                  <span class="arrow-space">&#62;</span>
+                  <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                  {% if collection %}
+                    <a href="{{ collection.url }}" title="{{ collection.title | escape }}" itemprop="url">
+                      <span itemprop="title">{{ collection.title }}</span>
+                    </a>
+                  {% else %}
+                    <a href="/collections" title="All Products" itemprop="url">
+                      <span itemprop="title">Pickles</span>
+                    </a>
+                  {% endif %}
+                  </span>
+                  <span class="arrow-space">&#62;</span>
+                  <strong>{{ product.title }}</strong>
+                </div>
+              </div>
+              <!-- End breadcrumb -->
+              <!-- Begin product photos -->
+              <div class="{% if product.images.size == 1 or settings.thumbnails_position == 'below' %}span6{% else %}span5{% endif %}">
+      
+                {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+                <!-- Begin featured image -->
+                <div class="row">
+                  <div class="span6 image featured">
+                    {% if settings.enable_product_image_zoom %}
+                    <img src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ featured_image.alt | escape }}" class="p30" />
+                    {% else if product.images.size == 1 %}
+                    <img src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ featured_image.alt | escape }}" class="p30" />
+                    {% else %}
+                    <a href="{{ featured_image | img_url: 'master' }}" class="fancy" id="placeholder">
+                      <img src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ featured_image.alt | escape }}" class="p30" />
+                    </a>
+                    {% endif %}
+                  </div>
+                  <div class="span6 product-labels">
+                    {% if product.url == "/products/beef-veggie-bone-brew" %}
+                    <img src="{{ 'flavor-sticker-beef.png' | asset_url }}" alt="Label Sticker - Beef" class="p30" />
+                    
+                    {% elsif product.url == "/products/turkey-bone-brew" %}
+                    <img src="{{ 'flavor-sticker-turkey.png' | asset_url }}" alt="Label Sticker - Turkey" class="p30" />
+                    {% elsif product.url == "/products/mixed-bone-brew" %}
+                    <img src="{{ 'flavor-sticker-turkey.png' | asset_url }}" alt="Label Sticker - Turkey" class="p30" />
+                    <img src="{{ 'flavor-sticker-beef.png' | asset_url }}" alt="Label Sticker - Beef" class="p30" />
+                    
+                    {% elsif product.url == "/products/mixed-artisan-yogurt" %}
+                    <img src="{{ 'flavor-sticker-blueberry.png' | asset_url }}" alt="Label Sticker - Blueberry" class="p30" />
+                    <img src="{{ 'flavor-sticker-cherry.png' | asset_url }}" alt="Label Sticker - Cherry" class="p30" />
+                    
+                    {% elsif product.url == "/products/wild-blueberry-yogurt" %}
+                    <img src="{{ 'flavor-sticker-blueberry.png' | asset_url }}" alt="Label Sticker - Blueberry" class="p30" />
+                    
+                    {% elsif product.url == "/products/chillin-cherry" %}
+                    <img src="{{ 'flavor-sticker-cherry.png' | asset_url }}" alt="Label Sticker - Cherry" class="p30" />
+                    
+                    
+                    {% elsif product.url == "/products/yogurt-beef-veggie-bone-brew-mix" %}
+                    <img src="{{ 'flavor-sticker-blueberry.png' | asset_url }}" alt="Label Sticker - Blueberry" class="p30" />
+                    <img src="{{ 'flavor-sticker-cherry.png' | asset_url }}" alt="Label Sticker - Cherry" class="p30" />
+                    
+                    <img src="{{ 'flavor-sticker-beef.png' | asset_url }}" alt="Label Sticker - Blueberry" class="p30" />
+                    
+                    {% elsif product.url == "/products/yogurt-turkey-bone-brew-mix" %}
+                    <img src="{{ 'flavor-sticker-blueberry.png' | asset_url }}" alt="Label Sticker - Blueberry" class="p30" />
+                    <img src="{{ 'flavor-sticker-cherry.png' | asset_url }}" alt="Label Sticker - Cherry" class="p30" />
+                    
+                    <img src="{{ 'flavor-sticker-turkey.png' | asset_url }}" alt="Label Sticker - Cherry" class="p30" />
+                    {% elsif product.url == "/products/yogurt-bone-brew-mix" %}
+                    <img src="{{ 'flavor-sticker-blueberry.png' | asset_url }}" alt="Label Sticker - Blueberry" class="p30" />
+                    <img src="{{ 'flavor-sticker-cherry.png' | asset_url }}" alt="Label Sticker - Cherry" class="p30" />
+                    
+                    <img src="{{ 'flavor-sticker-turkey.png' | asset_url }}" alt="Label Sticker - Cherry" class="p30" />
+                    <img src="{{ 'flavor-sticker-beef.png' | asset_url }}" alt="Label Sticker - Blueberry" class="p30" />
+                    {% endif %}
+                    <img src="{{ 'our-promise.png' | asset_url }}" alt="Nugget's Promise" class="p30" />
+                  </div>
+                </div>
+                <!-- End product image -->
+      
+                {% if product.images.size > 1 and settings.thumbnails_position == 'below' %}
+                <!-- Begin thumbnails -->
+                <div class="thumbs clearfix" style="margin-left:-15px;">
+                  {% for image in product.images %}
+                  <div class="image span2{% cycle 'last-in-row': '', '', ' last-in-row' %}">
+                    <a href="{{ image | img_url: '1024x1024' }}">
+                      <img src="{{ image | img_url: 'large' }}" alt="{{ image.alt | escape }}" />
+                    </a>
+                  </div>
+                  {% endfor %}
+                </div>
+                <!-- End thumbnails -->
+                {% endif %}
+      
+              </div>
+              <!-- End product photos -->
+    
+              {% if product.images.size > 1 and settings.thumbnails_position == 'right' %}
+              <!-- Begin thumbnails -->
+              <div class="span1">
+                <div class="thumbs clearfix">
+                  {% for image in product.images %}
+                  <div class="image">
+                    <a href="{{ image | product_img_url: '1024x1024' }}">
+                      <img src="{{ image | product_img_url: 'compact' }}" alt="{{ image.alt | escape }}" />
+                    </a>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+              <!-- End thumbnails -->
+              {% endif %}
+    
+    
+              <!-- Begin description -->
+              <div class="span6">
+      
+                <h1 class="title p0" itemprop="name">{{ product.title }}</h1>
+                <p class="tag">({{ product.tags }})</p>
+                
+                <form id="add-item-form" action="/cart/add" method="post" class="variants clearfix">
+                <!-- If Mix and match Show Button Twice -->
+
+                <div class="purchase-section{% if product.variants.size > 1 %} multiple{% endif %} mobile-add-to-cart">
+                  <div class="purchase">
+                    {% assign variant = product.selected_or_first_available_variant %}
+                    <h2 class="price" id="price-preview">
+                      <span itemprop="price">{{ variant.price | money }}</span>{% if variant.price < variant.compare_at_price %} <del>{{ variant.compare_at_price | money }}</del>{% endif %}
+                    </h2>
+                    <button type="submit" id="add-to-cart" class="btn btn-orange" name="add">Add to cart</button>
+                  </div>
+                </div>
+                <div class="description">
+                  {{ product.description }}
+                </div>
+      
+                <div class="purchase" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                  <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+                  {% if product.available %}
+                  <link itemprop="availability" href="http://schema.org/InStock" />
+                  {% else %}
+                  <link itemprop="availability" href="http://schema.org/OutOfStock" />
+                  {% endif %}
+        
+                </div>
+      
+                {% assign hide_default_title = false %}
+                {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+                  {% assign hide_default_title = true %}
+                {% endif %}
+            
+                
+        
+                  <!-- Begin product options -->
+                  <div class="product-options">
+                    <!--<h3 class="p5">Number of Jars</h3>-->
+
+                    <div class="select clearfix"{% if hide_default_title %} style="display:none"{% endif %}>
+                      <select id="product-select" name="id" style="display:none">
+                        {% for variant in product.variants %}
+                        <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    
+                    <div id="infiniteoptions-container"></div>
+          
+                    {% if settings.display_quantity_dropdown and product.available %}
+                   <!-- REMOVE <div class="selector-wrapper">
+                      <label>Quantity</label-->
+                      <input id="quantity" type="hidden" name="quantity" value="1" class="tc item-quantity" />
+                   <!-- </div>-->
+                    {% endif %}
+          
+                    <div class="purchase-section{% if product.variants.size > 1 %} multiple{% endif %}">
+                      <div class="purchase">
+                        {% assign variant = product.selected_or_first_available_variant %}
+                        <h2 class="price" id="price-preview">
+                          <span itemprop="price">{{ variant.price | money }}</span>{% if variant.price < variant.compare_at_price %} <del>{{ variant.compare_at_price | money }}</del>{% endif %}
+                        </h2>
+                        <button type="submit" id="add-to-cart" class="btn btn-orange" name="add">Add to cart</button>
+                      </div>
+                    </div>
+          
+                  </div>
+                  <!-- End product options -->
+        
+                </form>
+      
+      
+                {% if settings.show_social %}
+                <!-- Begin social buttons -->
+                <div class="social">
+                  {% include 'addthis' %}
+                </div>
+                <!-- End social buttons -->
+                {% endif %}
+    
+              </div>
+              <!-- End description -->
+   
+            </div>
+  
+  
+          </div>
+        </div>
+      </div>
+    </div><!-- End .color-background -->
+    
+    <div class="green-background green-texture texture-bottom texture-top">
+      <div class="wrapper">
+        <h2 class="block-header">Reviews</h2>
+      </div>
+    </div>
+    <div class="white-background">
+      <div class="wrapper">
+
+        <div class="yotpo yotpo-main-widget container"
+            data-product-id="{{ product.id }}"
+            data-name="{{ product.title | escape }}"
+            data-url="{{ shop.url }}{{ product.url }}"
+            data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}"
+            data-description="{{ product.description | escape }}">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Begin Healthy Nuggets -->
+    {% include 'healthy-nuggets' %}
+    
+    <!-- Begin related product -->
+    {% if settings.show_related_products %}
+      {% include 'related-products' %}
+    {% endif %}
+    
+        
+  </div><!-- End .product-page -->

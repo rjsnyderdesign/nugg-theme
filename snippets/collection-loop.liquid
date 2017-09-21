@@ -1,0 +1,17 @@
+        <div class="wrapper">
+          <div class="container">
+            <!-- Begin no products -->
+            {% if collection.products.size == 0 %}
+              <div class="span12 expanded-message">
+                <p>No products found</p>
+              </div>
+              {% endif %}
+            
+            <div class="product-list">
+              {% for product in collection.products %}
+              {% include 'product-loop' with collection.handle %}
+              {% endfor %}
+            </div>
+
+        </div>
+      </div>

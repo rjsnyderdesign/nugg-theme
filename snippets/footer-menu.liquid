@@ -1,0 +1,10 @@
+<ul class="footer-list">
+  {% for link in linklists.footer.links %}
+  <li>
+    <a href="{{ link.url }}" {% if link.active or parent_link_active %} class="current"{% endif %}>
+      {{ link.title }}
+    </a> 
+	</li>
+  {% endfor %}
+  <li><a href="javascript:void(0)" onClick="Privy.show(167069);">Newsletter Signup</a></li>
+</ul>

@@ -1,0 +1,54 @@
+  <!-- Add different Color Header based on Collection -->
+  {% if product.type == "Bone Brews" %}
+  <div class="green-background green-texture texture-bottom texture-top">
+    <div class="wrapper">
+      <h2 class="block-header">Healthy Nuggets</h2>
+    </div>
+  </div>
+  <div class="green-light-background"> 
+  {% else %}
+  <div class="orange-background orange-texture texture-bottom texture-top">
+    <div class="wrapper">
+      <h2 class="block-header">Healthy Nuggets</h2>
+    </div>
+  </div>
+  <div class="orange-light-background">
+  {% endif %}
+    <div class="wrapper">
+      <div class="container">
+
+            <div class="span8">
+              <ul class="heart-list">
+                {% if product.type == "Bone Brews" %}
+                <li>Turmeric is recommended more and more by veterinarians these days as a natural pain reliever with cancer-fighting properties. For this reason, it’s a great herb for pets who suffer from ailments and illnesses that cause pain. Turmeric is also being researched extensively for pharmacological use in treating and/or reducing symptoms related to a wide range of health conditions.</li>
+                <li>Ginger is known to promote healthy digestion and it is super high in antioxidants. Ginger is also known to help treat allergies as an antihistamine. Studies prove that ginger can improve blood circulation and help lower dogs' cholesterol levels.</li>
+                {% elsif product.type == "Artisan Yogurts"%}
+                <li>We use organic Ceylon cinnamon, consider by science to be the only “real” cinnamon. Cinnamon helps improve blood circulation, ensuring that newly oxygenated blood is circulated in the body. It’s great for dogs with joint pain or arthritis, and also has anti-inflammatory qualities. It also has lots of fiber and calcium.</li>
+                <li>Pumpkin is an excellent source of fiber and beta-carotene for dogs, as well as an excellent digestive aid.  </li>
+                <li>Apples are loaded with Vitamin A and C. Because they contain the fatty acids Omega 3 and Omega 6, apples can contribute to a dog’s healthy skin and glossy coat.</li>
+                {% elsif product.type == "Mix And Match"%}
+                <li class="heading">Bone Brews</li>
+                <li>Turmeric is recommended more and more by veterinarians these days as a natural pain reliever with cancer-fighting properties. For this reason, it’s a great herb for pets who suffer from ailments and illnesses that cause pain. Turmeric is also being researched extensively for pharmacological use in treating and/or reducing symptoms related to a wide range of health conditions.</li>
+                <li>Ginger is known to promote healthy digestion and it is super high in antioxidants. Ginger is also known to help treat allergies as an antihistamine. Studies prove that ginger can improve blood circulation and help lower dogs' cholesterol levels.</li>
+                <li class="heading">Artisan Yogurts</li>
+                <li>We use organic Ceylon cinnamon, consider by science to be the only “real” cinnamon. Cinnamon helps improve blood circulation, ensuring that newly oxygenated blood is circulated in the body. It’s great for dogs with joint pain or arthritis, and also has anti-inflammatory qualities. It also has lots of fiber and calcium.</li>
+                <li>Pumpkin is an excellent source of fiber and beta-carotene for dogs, as well as an excellent digestive aid.  </li>
+                <li>Apples are loaded with Vitamin A and C. Because they contain the fatty acids Omega 3 and Omega 6, apples can contribute to a dog’s healthy skin and glossy coat.</li>
+                {% endif %}
+              </ul>
+              <a href="/collections" class="btn btn-orange">View Products</a>
+            </div>
+            <div class="span4">
+              {% if product.type == "Bone Brews" %}
+              <img src="{{ 'retailers-brew-scarf.jpg' | asset_url }}" alt="Brew Scarf" class="p30" />
+              {% elsif product.type == "Artisan Yogurts"%}
+              <img src="{{ 'cow-patch.png' | asset_url }}" alt="Cow Patch" class="p30" />
+              {% elsif product.type == "Mix And Match"%}
+              <img src="{{ 'retailers-brew-scarf.jpg' | asset_url }}" alt="Brew Scarf" class="p30" />
+              <img src="{{ 'cow-patch.png' | asset_url }}" alt="Cow Patch" class="p30" />
+              {% endif %}
+            </div>
+      </div><!-- End .container -->
+    </div><!-- End .wrapper -->
+  </div>
+  <!-- End .green-light-background -->
